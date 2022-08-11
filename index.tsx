@@ -125,10 +125,16 @@ export default class OTPInputView extends Component<InputProps, OTPInputViewStat
                 }
             } else {
                 text.split("").forEach((value) => {
-                    if(index < pinCount) {
-                        newdigits[index] = value;
-                        index += 1;
-                    }
+                      if (index < pinCount) {
+                         let reg = new RegExp("[0-9]")
+                          if (reg.test(value)) {
+                            newdigits[index] = value;
+                            index += 1;
+                            } else {
+                                newdigits[index] = "";
+                               return
+                            }
+                        }
                 })
                 index -= 1
             }
